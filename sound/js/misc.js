@@ -80,15 +80,16 @@ function speaker_placement(){
 	});
 
 /*
+	placement[i][
 	0 = x
 	1 = z
 	2 = y
 	3 = wall
-	4 = ceiling
-	5 = toe in
+	4 = ceiling x
+	5 = ceiling z
+	6 = toe in
+	]
 */
-
-/* 	(listener depth - speaker depth) * listener wall / speaker wall + listener wall */
 
 	$.each(placements, function(i){
 		id = $(".placement:eq("+i+")").attr("id");
