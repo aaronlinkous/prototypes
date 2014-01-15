@@ -73,8 +73,7 @@ function speaker_placement(){
 		}
 			
 		z = id != "listener" ? +($(this).find("#z").val()) || 24 : +($(this).find("#z").val()) || dims[2]*.62;
-
-		y = +($(this).find("#y").val()) || 40;
+		y = +($(this).find("#y").val()) || 42;
 
 		var pos = [x,z,y];
 		placements.push(pos);
@@ -101,23 +100,25 @@ function speaker_placement(){
 		});
 
 		var wall_reflection = i > 0 ? ((placements[0][1] - placements[i][1]) * placements[0][0]) / (placements[i][0] + placements[0][0]) : 0;
-		wall_reflection =  placements[0][1] - wall_reflection;
+		wall_reflection =  Math.ceil(placements[0][1] - wall_reflection);
 
 		var ceiling_reflection = i > 0 ? ((placements[0][1] - placements[i][1]) * (dims[0] - placements[0][2])) / ((dims[0] - placements[i][2]) + (dims[0] - placements[0][2])) : 0;
 		ceiling_reflection =  placements[0][1] - ceiling_reflection;
 
-		var speaker_to_listener = placements[0][1] - placements[i][1];
-		var wall_to_listener = placements[0][0] - placements[i][0];
-		var toe_in = Math.ceil(Math.atan(wall_to_listener/speaker_to_listener) * 180 / Math.PI) || 0;
+		var toe = Math.atan2(placements[0][1] - placements[i][1], placements[0][0] - placements[i][0]);
+		var toe_in = Math.ceil(-((toe * 180 / Math.PI) - 90)) || 0;
+		var ceiling_x = Math.ceil(placements[i][0] + Math.cos(toe) * ceiling_reflection);
+		var ceiling_y = Math.ceil(placements[i][1] + Math.sin(toe) * ceiling_reflection);
 
 		placements[i].push(wall_reflection);
-		placements[i].push(ceiling_reflection);
+		placements[i].push(ceiling_x);
+		placements[i].push(ceiling_y);
 		placements[i].push(toe_in);
 
 		if(id != "listener"){
 			$("#"+id).css("-webkit-transform","rotate("+angle+toe_in+"deg)");
 			$('<div id="'+id+'_ref" class="reflection"><div class="inputs"><input type="text" disabled value="'+(placements[i][3])+'" /></div></div>').appendTo("#room").css("top", (placements[i][3])*scale).css(wall,"0");
-			$('<div id="'+id+'_ref_ceiling" class="reflection ceiling"><div class="inputs"><input type="text" disabled value="'+(placements[i][4])+'" /></div></div>').appendTo("#room").css("top", (placements[i][4])*scale).css(wall,(placements[i][0])*scale).css("-webkit-transform","rotate("+angle+toe_in+"deg)");
+			$('<div id="'+id+'_ref_ceiling" class="reflection ceiling"><div class="inputs"><input type="text" disabled value="'+(placements[i][4])+'" /><input type="text" disabled value="'+(placements[i][5])+'" /></div></div>').appendTo("#room").css("top", ceiling_y*scale).css(wall,ceiling_x*scale).css("-webkit-transform","rotate("+angle+toe_in+"deg)");
 		}
 
 		if(id == "center") {
@@ -151,11 +152,12 @@ function spitout() {
 				id = $(".placement:eq("+i+")").attr("id");
 				$('<h3>'+id+'</h3>:').appendTo("#placement");
 				$('<p>Tweeter Height: '+placements[i][2]+' inches from the floor</p>').appendTo("#placement");
-				$('<p>Toe In: '+placements[i][5]+'*</p>').appendTo("#placement");
+				$('<p>Toe In: '+placements[i][6]+'*</p>').appendTo("#placement");
 				$('<p>'+placements[i][0]+' inches from Side wall</p>').appendTo("#placement");
 				$('<p>'+placements[i][1]+' inches from Front wall</p>').appendTo("#placement");
-				$('<p>Early Wall Reflection is '+placements[i][3]+' inches from Front wall</p>').appendTo("#placement");
-				$('<p>First Ceiling Reflection is '+placements[i][4]+' inches from Front wall</p>').appendTo("#placement");
+				$('<p>First Wall Reflection is '+placements[i][3]+' inches from Front wall</p>').appendTo("#placement");
+				$('<p>Ceiling Reflection is '+placements[i][4]+' inches from Side wall</p>').appendTo("#placement");
+				$('<p>Ceiling Reflection is '+placements[i][5]+' inches from Front wall</p>').appendTo("#placement");
 		}
 	});
 }
