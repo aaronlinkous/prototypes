@@ -1,0 +1,146 @@
+/* line 1, ../scss/css.scss */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 8, ../scss/css.scss */
+#modes thead, #modes tbody {
+  display: inline-block;
+}
+
+/* line 12, ../scss/css.scss */
+.emphasized {
+  color: #fff;
+  background-color: #e42951;
+}
+
+/* line 17, ../scss/css.scss */
+#room {
+  box-sizing: border-box;
+  display: none;
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  border: 1px solid #333;
+}
+/* line 25, ../scss/css.scss */
+#room > div {
+  box-sizing: border-box;
+  position: absolute;
+}
+/* line 30, ../scss/css.scss */
+#room .inputs {
+  z-index: 9999;
+  display: none;
+  position: absolute;
+  bottom: 105%;
+  left: -12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3px;
+  width: 60px;
+  border-radius: 3px;
+}
+/* line 42, ../scss/css.scss */
+#room .placement {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-color: blue;
+  margin-left: -20px;
+}
+/* line 50, ../scss/css.scss */
+#room #listener {
+  background-color: green;
+  border-radius: 40px;
+  margin-top: -20px;
+}
+/* line 55, ../scss/css.scss */
+#room #listener:after, #room #listener:before {
+  content: " ";
+  height: 10px;
+  width: 10px;
+  background-color: purple;
+  border-radius: 9px;
+  display: block;
+  position: absolute;
+  left: 35px;
+  top: 15px;
+}
+/* line 67, ../scss/css.scss */
+#room #listener:before {
+  left: -5px;
+}
+/* line 72, ../scss/css.scss */
+#room .reflection {
+  background-color: rgba(228, 41, 81, 0.5);
+  width: 10px;
+  height: 80px;
+  margin-top: -40px;
+}
+/* line 78, ../scss/css.scss */
+#room .reflection .inputs {
+  left: -30px;
+}
+/* line 82, ../scss/css.scss */
+#room .reflection.ceiling .inputs {
+  left: -2.5px;
+}
+/* line 87, ../scss/css.scss */
+#room .speaker {
+  margin-top: -40px;
+}
+/* line 90, ../scss/css.scss */
+#room .speaker:after {
+  content: " ";
+  height: 10px;
+  width: 10px;
+  background-color: aqua;
+  border-radius: 9px;
+  display: block;
+  position: absolute;
+  top: 35px;
+  left: 15px;
+}
+/* line 103, ../scss/css.scss */
+#room .ceiling {
+  margin-top: -60px;
+  width: 60px;
+  height: 120px;
+  margin-left: -30px;
+}
+/* line 110, ../scss/css.scss */
+#room #right {
+  margin-left: 0;
+  margin-right: -20px;
+}
+/* line 115, ../scss/css.scss */
+#room #right_ref_ceiling {
+  margin-left: 0;
+  margin-right: -30px;
+}
+/* line 120, ../scss/css.scss */
+#room input {
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  font-size: 12px;
+}
+/* line 128, ../scss/css.scss */
+#room .room_label {
+  background-color: transparent;
+  margin: 0;
+}
+/* line 132, ../scss/css.scss */
+#room .room_label#x_label {
+  width: 100%;
+  text-align: center;
+}
+/* line 137, ../scss/css.scss */
+#room .room_label#z_label {
+  top: 50%;
+  width: auto;
+}

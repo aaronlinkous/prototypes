@@ -2,137 +2,9 @@
 <html>
 	<head>
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/css.css" media="screen" />
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 		<script src="js/misc.js"></script>
-
-		<style>
-			html, body {
-				margin: 0;
-				padding: 0;
-				height: 100%;
-				width: 100%;
-			}
-
-			#modes thead, #modes tbody{
-				display: inline-block;
-			}
-
-			.emphasized {
-				color: #fff;
-				background-color: #e42951;
-			}
-
-			#room {
-				box-sizing: border-box;
-				display: none;
-				position: absolute;
-				right: 30px;
-				top: 30px;
-				border: 1px solid #333;
-			}
-
-			#room > div {
-				box-sizing: border-box;
-				width: 40px;
-				height: 40px;
-				padding: 5px;
-				position: absolute;
-				background-color: blue;
-			}
-
-			#room > .placement.left {
-				margin-left: -20px;
-			}
-
-			#room > .placement.right {
-				margin-right: -20px;
-			}
-
-			#room .inputs {
-				z-index: 9999;
-				display: none;
-				position: absolute;
-				top: -30px;
-				left: -12px;
-				background-color: rgba(0,0,0, .5);
-				padding: 3px;
-				width: 60px;
-				border-radius: 3px;
-			}
-
-			#room .reflection .inputs {
-				left: -30px;
-			}
-
-			#room #listener {
-				background-color: green;
-				border-radius: 40px;
-				margin-top: -20px;
-			}
-
-			#room .speaker {
-				margin-top: -40px;
-			}
-
-			#room .reflection {
-				background-color: rgba(228,41,81, .5);
-				width: 10px;
-				height: 80px;
-				margin-top: -40px;
-			}
-
-			#room input {
-				text-align: center;
-				box-sizing: border-box;
-				display: block;
-				width: 100%;
-				font-size: 12px
-			}
-
-			#room .room_label {
-				background-color: transparent;
-				margin: 0;
-			}
-
-			#room #x_label {
-				width: 100%;
-				text-align: center;
-			}
-
-			#room #z_label {
-				top: 50%;
-				width: auto;
-			}
-
-			#room .front:after {
-				content: " ";
-				height: 10px;
-				width: 10px;
-				background-color: aqua;
-				border-radius: 9px;
-				display: block;
-				position: absolute;
-				top: 35px;
-				left: 15px;
-			}
-
-			#room #listener:after,#room #listener:before {
-				content: " ";
-				height: 10px;
-				width: 10px;
-				background-color: purple;
-				border-radius: 9px;
-				display: block;
-				position: absolute;
-				left: 35px;
-				top: 15px;
-			}
-
-			#room #listener:before {
-				left: -5px;
-			}
-
-		</style>
 	</head>
 	<body>
 
@@ -142,37 +14,41 @@
 
 			<div id="listener" class="placement left">
 				<div class="inputs">
-					<input id="x" placeholder="x">
-					<input id="z"placeholder="z">
+					<input id="x" placeholder="X" />
+					<input id="z" placeholder="Z" />
+					<input id="y" placeholder="off floor" />
 				</div>
 			</div>
 
-			<div id="fl" class="front speaker left placement">
+			<div id="left" class="speaker placement">
 				<div class="inputs">
-					<input id="x" placeholder="X">
-					<input id="z" placeholder="Z">
+					<input id="x" placeholder="X" />
+					<input id="z" placeholder="Z" />
+					<input id="y" placeholder="off floor" />
 				</div>
 			</div>
 
-			<div id="fr" class="front speaker right placement">
+			<div id="right" class="speaker placement">
 				<div class="inputs">
-					<input id="x" placeholder="X">
-					<input id="z" placeholder="Z">
+					<input id="x" placeholder="X" />
+					<input id="z" placeholder="Z" />
+					<input id="y" placeholder="off floor" />
 				</div>
 			</div>
 
-			<div id="c" class="front speaker left placement">
+			<div id="center" class="speaker placement">
 				<div class="inputs">
-					<input id="x" placeholder="X">
-					<input id="z" placeholder="Z">
+					<input id="x" placeholder="X" />
+					<input id="z" placeholder="Z" />
+					<input id="y" placeholder="off floor" />
 				</div>
 			</div>
 		</div>
 
 		<div>
-			<p>
+			<h1>
 				Room Info:
-			</p>
+			</h1>
 		</div>
 
 		<div><label><input value="96" type="text" id="room_height" class="room_dimension" placeholder="height" /> Inches </label></div>
@@ -186,9 +62,9 @@
 		</div>
 
 		<div>
-			<p>
+			<h1>
 				Axial Room Resonance Modes:
-			</p>
+			</h1>
 		</div>
 
 		<table id="modes" cellpadding="2" border="1">
@@ -215,6 +91,9 @@
 			<p>
 				Emphasized Frequencies are shown in <span class="emphasized">&nbsp;red&nbsp;</span>
 			</p>
+		</div>
+
+		<div id="placement">
 		</div>
 
 	</body>
