@@ -1,11 +1,11 @@
 /* line 9, ../scss/css.scss */
-.input_holder .label {
+.styled_form .input_holder .label {
   -webkit-transition: all 0.125s ease-in-out;
   transition: all 0.125s ease-in-out;
 }
 
 /* line 15, ../scss/css.scss */
-html, body, h1, input, select {
+html, body, h1, .styled_form input, .styled_form select {
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: 'liga', 'dlig';
   -moz-font-feature-settings: 'liga', 'dlig';
@@ -144,7 +144,7 @@ h1 {
 }
 
 /* line 145, ../scss/css.scss */
-input, select {
+.styled_form input, .styled_form select {
   position: relative;
   background-color: transparent;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -158,13 +158,8 @@ input, select {
   padding: 10px 0 0;
   -webkit-appearance: none;
 }
-/* line 160, ../scss/css.scss */
-input::-webkit-input-placeholder, input::placeholder, select::-webkit-input-placeholder, select::placeholder {
-  color: #b6b6b6;
-}
-
-/* line 165, ../scss/css.scss */
-select {
+/* line 162, ../scss/css.scss */
+.styled_form select {
   background-image: url(../images/fw_drop_down@2x.png);
   background-position: right 7px;
   background-repeat: no-repeat;
@@ -173,23 +168,21 @@ select {
   padding-top: 10px;
   padding-right: 25px;
 }
-
-/* line 175, ../scss/css.scss */
-.has_value {
+/* line 172, ../scss/css.scss */
+.styled_form .has_value {
   color: #333333;
 }
-
-/* line 179, ../scss/css.scss */
-.input_holder {
+/* line 176, ../scss/css.scss */
+.styled_form .input_holder {
   border-left: 1px solid #d5d5d5;
   padding: 5px 0 6.66667px;
 }
-/* line 183, ../scss/css.scss */
-.input_holder:first-child {
+/* line 180, ../scss/css.scss */
+.styled_form .input_holder:first-child {
   border-left-color: transparent;
 }
-/* line 187, ../scss/css.scss */
-.input_holder .label {
+/* line 184, ../scss/css.scss */
+.styled_form .input_holder .label {
   opacity: 0;
   position: absolute;
   z-index: -1;
@@ -199,34 +192,46 @@ select {
   font-weight: 500;
   font-size: 10px;
 }
-/* line 200, ../scss/css.scss */
-.input_holder:not(:first-child) .label {
+/* line 197, ../scss/css.scss */
+.styled_form .input_holder:not(:first-child) .label, .styled_form .input_holder:not(:first-child) .fake_place {
   left: 11px;
 }
-/* line 206, ../scss/css.scss */
-.input_holder .has_value + .label {
+/* line 203, ../scss/css.scss */
+.styled_form .input_holder .has_value + .label {
   top: -4px;
   opacity: 1;
 }
-/* line 212, ../scss/css.scss */
-.input_holder.has_error {
+/* line 209, ../scss/css.scss */
+.styled_form .input_holder .fake_place {
+  display: none;
+  position: absolute;
+  top: 14px;
+  z-index: -1;
+  color: #b6b6b6;
+}
+/* line 218, ../scss/css.scss */
+.styled_form .input_holder .check_val:invalid ~ .fake_place {
+  display: block;
+}
+/* line 223, ../scss/css.scss */
+.styled_form .input_holder.has_error {
   background-color: #d51740;
 }
-/* line 215, ../scss/css.scss */
-.input_holder.has_error input, .input_holder.has_error .label {
+/* line 226, ../scss/css.scss */
+.styled_form .input_holder.has_error input, .styled_form .input_holder.has_error .label {
   color: #fff;
 }
-/* line 219, ../scss/css.scss */
-.input_holder.has_error input::-webkit-input-placeholder, .input_holder.has_error::placeholder {
+/* line 230, ../scss/css.scss */
+.styled_form .input_holder.has_error .fake_place {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* line 224, ../scss/css.scss */
+/* line 236, ../scss/css.scss */
 #spacer {
   height: 60px;
 }
 
-/* line 228, ../scss/css.scss */
+/* line 240, ../scss/css.scss */
 #primary_cta {
   bottom: 0;
   z-index: 999;
@@ -236,14 +241,14 @@ select {
   border-top: 1px solid #fff;
 }
 
-/* line 237, ../scss/css.scss */
+/* line 249, ../scss/css.scss */
 #price {
   margin-right: 0;
   background-color: #d5d5d5;
   text-align: center;
 }
 
-/* line 243, ../scss/css.scss */
+/* line 255, ../scss/css.scss */
 #add_to_cart {
   text-align: center;
   color: #fff;
@@ -252,12 +257,12 @@ select {
   min-width: 160px;
 }
 
-/* line 251, ../scss/css.scss */
+/* line 263, ../scss/css.scss */
 .fixed {
   position: fixed;
 }
 
-/* line 255, ../scss/css.scss */
+/* line 267, ../scss/css.scss */
 .fix_fixed .fixed {
   display: none;
 }

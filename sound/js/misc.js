@@ -1,4 +1,4 @@
-var dims = [], modes = [], placements = [], scale = 3, room_w, room_h, room_l, system;
+var dims = [], modes = [], placements = [], scale = 3, room_w, room_h, room_l;
 
 /* Multi,uniq, and interestion functions by Jason Keene */
 function intersection(array1, array2){
@@ -61,11 +61,9 @@ function room_modes(){
 
 function speaker_placement(){
 	$(".reflection").remove();
-
 	placements = [];
 	$(".placement").each(function(i,point){
 		id = $(this).attr("id");
-
 		if(id != "center" && id != "listener") {
 			x =  +($(this).find("#x").val()) || 24;
 		} else {
@@ -167,7 +165,6 @@ function get_specs() {
 	room_h = +($("#room_height").val());
 	room_w = +($("#room_width").val());
 	room_l = +($("#room_length").val());
-	system = +($("#system").val());
 
 	placements = [];
 	dims = [room_h,room_w,room_l];

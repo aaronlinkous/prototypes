@@ -12,100 +12,111 @@
 		<meta name="format-detection" content="telephone=no">
 	</head>
 	<body>
-		<h1>Recipient Information</h1>
+		
+		<h1>How It Works:</h1>
+		<ul>
+			<li>Grabs desktop form values on load and sets our inputs to that value</li>
+			<li>If the desktop's inputs are empty, and we set a value in ours, it will auto populate the desktop fields.</li>
+			<li>When we update our inputs by typing, pasting, etc it will update the desktop</li>
+			<li>We can override the desktops default value on initial load with a class of .override on our inputs</li>
+			<li>Data id's on both form and inputs assign inputs to the desktop's form and input id. Form data-id's are used because desktop id's are sometimes not unique across multiple forms.</li>
+		</ul>
 
-		<div class="row">
-			<ul id="steps" class="split">
-				<li></li>
-				<li class="step active">1</li>
-				<li class="active"></li>
-				<li class="step active">2</li>
-				<li></li>
-				<li class="step">3</li>
-				<li></li>
-			</ul>
-			<div class="clear"></div>
-		</div>
-
-		<form>
+		<form novalidate="novalidate" class="styled_form" data-id="real_form_1">
 			<div class="row split no_margin bt">
 				<div class="input_holder">
-					<input type="text" placeholder="First Name" class="check_val" />
-					<div class="label">First Name</div>
+					<input type="text" placeholder="First Name" class="check_val" data-id="first_name" />
 				</div>
 
 				<div class="input_holder">
-					<input type="text" placeholder="Last Name" class="check_val" />
-					<div class="label">Last Name</div>
+					<input type="text" placeholder="Last Name" value="Linkous" class="check_val" data-id="last_name" />
 				</div>
 			</div>
 
 			<div class="row no_margin bt">
 				<div class="input_holder">
-					<select class="check_val">
+					<select class="check_val" placeholder="Location Type">
 						<option value="">Location Type</option>
 						<option value="Res">Residence</option>
 					</select>
-					<div class="label">Location Type</div>
 				</div>
 			</div>
 
 			<div class="row small bt">
-Delivery Notes: For gifts to be delivered to P.O. Boxes or APO installations, please select P.O. Box or APO for the Location Type.
+				Delivery Notes: For gifts to be delivered to P.O. Boxes or APO installations, please select P.O. Box or APO for the Location Type.
 			</div>
 
 			<div class="row no_margin bt">
 				<div class="input_holder">
 					<input type="text" placeholder="Street Address 1" class="check_val" />
-					<div class="label">Street Address 1</div>
 				</div>
 			</div>
 
 			<div class="row no_margin bt">
 				<div class="input_holder">
-					<input type="text" placeholder="Street Address 2" class="check_val" />
-					<div class="label">Street Address 2</div>
+					<input type="text" placeholder="Street Address 2" class="check_val override" value="321 Override Ave." data-id="street_2" />
 				</div>
 			</div>
 
 			<div class="row split no_margin bt">
 				<div class="input_holder extra_width">
 					<input type="text" placeholder="City" class="check_val" />
-					<div class="label">City</div>
 				</div>
 
 				<div class="input_holder">
-					<select class="check_val">
+					<select class="check_val" placeholder="State" data-id="state">
 						<option value="">State</option>
-						<option value="USA" selected>WA</option>
+						<option value="USA">WA</option>
 					</select>
-					<div class="label">State</div>
 				</div>
 
 				<div class="input_holder">
 					<input type="tel" placeholder="Zip Code" maxlength="7" class="check_val" />
-					<div class="label">Zip Code</div>
 				</div>
 			</div>
 
 			<div class="row bt bb">
 				<div class="input_holder">
-					<select class="check_val">
+					<select class="check_val" placeholder="Country" data-id="country">
 						<option value="">Country</option>
-						<option value="USA" selected>United States of America</option>
+						<option value="USA">United States of America</option>
 					</select>
-					<div class="label">Country</div>
 				</div>
 			</div>
 		</form>
 
-		<div class="row">
-			<div id="spacer"></div>
-		</div>
+		<form id="real_form_1">
+			<input type="text" id="first_name" value="Aaron" />
+			<input type="text" id="last_name" />
 
-		<div id="primary_cta" class="split fixed">
-			<div id="price">$137.99</div>
-			<div id="add_to_cart">Next Step ></div>
-		</div>
+			<input type="text" id="street_2" value="Was 123 Test Dr" />
+
+			<select id="country">
+				<option value="">Country</option>
+				<option value="USA">United States of America</option>
+			</select>
+
+			<select id="state">
+				<option value="" selected>State</option>
+				<option value="USA">WA</option>
+			</select>
+		</form>
+
+		<form id="real_form_2">
+			<input type="text" id="first_name" value="John" />
+			<input type="text" id="last_name" />
+
+			<input type="text" id="street_2" value="123 Test Dr" />
+
+			<select id="country">
+				<option value="">Country</option>
+				<option value="USA">United States of America</option>
+			</select>
+
+			<select id="state">
+				<option value="">State</option>
+				<option value="USA" selected>WA</option>
+			</select>
+		</form>
 	</body>
 </html>
