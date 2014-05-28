@@ -18,10 +18,11 @@
 			<li>Grabs desktop form values on load and sets our inputs to that value</li>
 			<li>If the desktop's inputs are empty, and we set a value in ours, it will auto populate the desktop fields.</li>
 			<li>When we update our inputs by typing, pasting, etc it will update the desktop</li>
-			<li>We can override the desktops default value on initial load with a class of .override</li>
+			<li>We can override the desktops default value on initial load with a class of .override on our inputs</li>
+			<li>Data id's on both form and inputs assign inputs to the desktop's form and input id. Form data-id's are used because desktop id's are sometimes not unique across multiple forms.</li>
 		</ul>
 
-		<form novalidate="novalidate" class="styled_form">
+		<form novalidate="novalidate" class="styled_form" data-id="real_form_1">
 			<div class="row split no_margin bt">
 				<div class="input_holder">
 					<input type="text" placeholder="First Name" class="check_val" data-id="first_name" />
@@ -84,7 +85,7 @@
 			</div>
 		</form>
 
-		<form id="real_form">
+		<form id="real_form_1">
 			<input type="text" id="first_name" value="Aaron" />
 			<input type="text" id="last_name" />
 
@@ -98,6 +99,23 @@
 			<select id="state">
 				<option value="" selected>State</option>
 				<option value="USA">WA</option>
+			</select>
+		</form>
+
+		<form id="real_form_2">
+			<input type="text" id="first_name" value="John" />
+			<input type="text" id="last_name" />
+
+			<input type="text" id="street_2" value="123 Test Dr" />
+
+			<select id="country">
+				<option value="">Country</option>
+				<option value="USA">United States of America</option>
+			</select>
+
+			<select id="state">
+				<option value="">State</option>
+				<option value="USA" selected>WA</option>
 			</select>
 		</form>
 	</body>

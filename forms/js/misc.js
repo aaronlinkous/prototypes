@@ -4,29 +4,27 @@ function check_val(input) {
 	$(input).val() != "" ? $(input).addClass("has_value") : $(input).removeClass("has_value");
 }
 
-function update_val(input) {
-	real_input = $(input).attr("data-id");
-
-	real_value = $("#"+real_input).val();
+function update_val(input, form_id) {
+	real_input = "#"+form_id+" #" + $(input).attr("data-id");
+	real_value = $(real_input).val();
 	our_value = $(input).val();
 
 	if(initial_values) {
-		//grabs real form values and places in fake form if it's value is not nothing
-		
 		if($(input).hasClass("override")){ 
-			$("#"+real_input).val(our_value);
+			$(real_input).val(our_value);
 		} else {
-			real_value ? $(input).val(real_value) : $("#"+real_input).val(our_value);
+			//grabs real form values and places in fake form if it's value is not nothing
+			real_value ? $(input).val(real_value) : $(real_input).val(our_value);
 		}
 	} else {
 		//grabs fake form values and places in real form
-		$("#"+real_input).val(our_value);
+		$(real_input).val(our_value);
 	}
 }
 
 $(document).ready(function(){
 	$(".check_val").each(function(){
-		console.log(initial_values);
+		form_id = $(this).closest("form").attr("data-id");
 		place  = $(this).attr("placeholder");
 		is_select = $(this).is("select");
 
@@ -42,10 +40,10 @@ $(document).ready(function(){
 		if(!is_select) $(fake_place).insertAfter(this);
 		$(label).insertAfter(this);
 
-		update_val(this);
+		update_val(this, form_id);
 		check_val(this);
 	}).on("keydown keyup click blur focus change paste", function(){
-		update_val(this);
+		update_val(this, form_id);
 		check_val(this);
 	});
 
